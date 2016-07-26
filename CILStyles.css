@@ -1,0 +1,39 @@
+/* This is the stylesheet for Communications in Information Literacy. It will include styles for the HTML, EPUB, Mobi, etc. versions of CIL. */
+
+/* titleblock: The title, subtitle, author(s), and author affiliation(s) */
+
+#titleblock h1 { font-variant: small-caps; font-size: 200%; }
+#titleblock h1.subtitle { font-size: 150%; font-variant: normal; } 
+#titleblock p.author { font-style: italic; font-family: "Times New Roman", serif; }
+
+
+/* bodyblock: The rest of the paper */
+
+#bodyblock p {  }
+
+h1, h2, h3 { font-family: "Times New Roman", serif; }
+
+p.abstract { margin-right: 10%; margin-left: 10%; text-align: justify; margin-top: 2%; }
+
+
+/* CILRefs: The reference list. List items have a hanging indent and no bullet; use an UNORDERED list for semantic reasons. */
+
+ul#CILRefs { list-style-type: none;
+margin-left: 0em;
+padding-left: 0em;
+}
+
+ul#CILRefs li {
+	margin-left: 0em;
+   padding-left: 2.4em;
+   text-indent: -2.4em;
+	
+}
+
+/* Table styles */ 
+
+table { margin-left: 5%; margin-right: 5%; }
+tr, td {
+border: 1px solid #000; }
+td { padding: 2%; width: auto; }
+
