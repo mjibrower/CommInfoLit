@@ -36,4 +36,4 @@ table { margin-left: 5%; margin-right: 5%; }
 tr, td {
 border: 1px solid #000; }
 td { padding: 2%; width: auto; }
-
+td.label {font-weight: bold; }
