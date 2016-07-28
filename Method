@@ -1,0 +1,25 @@
+METHOD
+------
+
+This is the method by which we (I) intend to implement the retroconversion of CIL articles to multiple formats. It is subject to change at any time, for any reason. Which is why I am documenting it.
+
+FIRST METHOD
+
+STEP 1: Getting the articles into a usable form
+Open a document in Publisher (this is necessary because sometimes edits are not made until the final layout in Publisher). Save as Word (.docx).
+Open the new .docx in Word. Save as filtered HTML. It will only do this in .htm format, which Sigil can't read, so go ahead and save, then rename to .html. 
+Open the new HTML file in Sigil. Apply styles from template. 
+
+STEP 2: Convert
+Rename new document [come up with naming convention] and link to stylesheet (CILStyles.css). Add title page and cover. Compile as epub. (THIS STEP WILL REMAIN IN OTHER METHODS)
+
+Obviously, this is very time-consuming... for ME. Considering that I am not paid for this and am mainly doing it because I'm embarrassed that we are currently only providing our readers with not-terribly-accessible PDFs, I'd like to find another method.
+
+SECOND METHOD
+Currently in experimentation phase.
+
+STEP 1: Getting the articles into a usable form
+Open the document in Publisher; save as Word (.docx).
+Open the new .docx in Word.
+Cut and paste into CKEditor template. Apply styles. Upon saving, you have usable HTML output. Continue to STEP 2. 
+
