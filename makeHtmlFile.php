@@ -47,7 +47,7 @@ if(isset($editor_data)) {
 
 <link href="../Styles/CILStyles.css" type="text/css" rel="stylesheet"/>
 </head>'.
-'<body>'.$titleblock.$bodyblock.$editor_data.'</body>
+'<body>'.$titleblock.$bodyblock.$editor_data.'</div></body>
 </html>';
 
     $ret = file_put_contents($filename, $data, FILE_APPEND | LOCK_EX);
