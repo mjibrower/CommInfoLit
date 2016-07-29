@@ -1,13 +1,19 @@
+
+
 <?php
+
+//First attempt at creating an HTML file from a submitted article, with CIL styles applied
 
     $editor_data = $_POST[ 'editor1' ];
     $vol = $_POST[ 'vol' ];
     $no = $_POST[ 'no' ];
     $article_title = $_POST[ 'title' ];
     $article_subtitle = $_POST[ 'subtitle' ];
+    $lastnameID = $_POST['lastname'];
     $article_author = $_POST[ 'author' ];
     $author_affiliation = $_POST['affiliation'];
-    $filename = $article_author.'_'.$vol.'-'.$no.'.html';
+    $abstract = $_POST['abstract'];
+    $filename = $article_author.'_Vol'.$vol.'No'.$no.'.html';
     
 //Title Block
 
