@@ -13,7 +13,8 @@
     $article_author = $_POST[ 'author' ];
     $author_affiliation = $_POST['affiliation'];
     $abstract = $_POST['abstract'];
-    $filename = $article_author.'_Vol'.$vol.'No'.$no.'.html';
+    $filename = $lastnameID.'_Vol'.$vol.'No'.$no.'.html';
+    $fileLocation = './papers/'.$filename;
     
 //Title Block
 
@@ -34,6 +35,23 @@
   <div class="abstract">
     <p>'.$abstract.'</p>
   </div>';
+  
+//Variables to replace HTML cruft from CKEditor (make function later)
+
+function unCruft() {
+    
+
+
+//open file and get data
+$unCruftData = file_get_contents($fileLocation);
+
+// replace tags
+$unCruftData = str_replace("<p>&nbsp;</p>", " ", $unCruftData);
+
+//save it back:
+file_put_contents($fileLocation, $data);
+
+}
 
 if(isset($editor_data)) {
     $data = $editor_data;
@@ -50,14 +68,37 @@ if(isset($editor_data)) {
 '<body>'.$titleblock.$bodyblock.$editor_data.'</div></body>
 </html>';
 
-    $ret = file_put_contents($filename, $data, FILE_APPEND | LOCK_EX);
+    $ret = file_put_contents($fileLocation, $data, FILE_APPEND | LOCK_EX);
+   
     if($ret === false) {
         die('There was an error writing this file');
     }
     else {
-        echo "$ret bytes written to file. Preview now: ".'<a href="http://www.cilpublications.org/sandbox/'.$filename.'">Click</a>';
+        
+// Unfunctioned uncrufting
+
+        //open file and get data
+$unCruftData = file_get_contents($fileLocation);
+
+// replace tags
+$unCruftData = str_replace("<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+", "<p>This is a blank line</p> ", $unCruftData);
+$unCruftData = str_replace("&rsquo;", "'", $unCruftData);
+
+//save it back:
+file_put_contents($fileLocation, $unCruftData);
+
+
+//end uncrufting
+
+
+        echo "$ret bytes written to file. Preview now: ".'<a href="http://www.cilpublications.org/sandbox/papers/'.$filename.'">Click</a>';
     }
+    
+    
 }
+
+ 
 else {
    die('no post data to process');
 }
