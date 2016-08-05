@@ -10,11 +10,18 @@
     $article_title = $_POST[ 'title' ];
     $article_subtitle = $_POST[ 'subtitle' ];
     $lastnameID = $_POST['lastname'];
-    $article_author = $_POST[ 'author' ];
+    $article_authors = $_POST[ 'authors' ];
     $author_affiliation = $_POST['affiliation'];
     $abstract = $_POST['abstract'];
     $filename = $lastnameID.'_Vol'.$vol.'No'.$no.'.html';
     $fileLocation = './papers/'.$filename;
+    $reflist = '<div id="RefList"><h2 class="CILHead">References</h2>
+    <!-- Enter reference list here -->
+    <ul id="CILRefs">
+    <li></li>
+    <li></li>
+    </ul></div>';
+    
     
 //Title Block
 
@@ -22,7 +29,7 @@
   <h1>'.$article_title.'</h1>'.
 
   '<h1 class="subtitle">'.$article_subtitle.'</h1>'.
-  '<p class="author">'.$article_author.', '.$author_affiliation.'</p>
+  '<p class="author">'.$article_authors.', '.$author_affiliation.'</p>
   <!-- Can add more authors --> 
 </div>';
 
@@ -36,24 +43,11 @@
     <p>'.$abstract.'</p>
   </div>';
   
-//Variables to replace HTML cruft from CKEditor (make function later)
 
-function unCruft() {
-    
-
-
-//open file and get data
-$unCruftData = file_get_contents($fileLocation);
-
-// replace tags
-$unCruftData = str_replace("<p>&nbsp;</p>", " ", $unCruftData);
-
-//save it back:
-file_put_contents($fileLocation, $data);
-
-}
 
 if(isset($editor_data)) {
+    $badtags = array("<p></p>", "<h2></h2>", "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>", "<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>");
+    $editor_data = str_replace($badtags, "", $editor_data);
     $data = $editor_data;
     $data = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">'.
@@ -65,7 +59,7 @@ if(isset($editor_data)) {
 
 <link href="../Styles/CILStyles.css" type="text/css" rel="stylesheet"/>
 </head>'.
-'<body>'.$titleblock.$bodyblock.$editor_data.'</div></body>
+'<body>'.$titleblock.$bodyblock.$editor_data.$reflist.'</div></body>
 </html>';
 
     $ret = file_put_contents($fileLocation, $data, FILE_APPEND | LOCK_EX);
@@ -74,25 +68,13 @@ if(isset($editor_data)) {
         die('There was an error writing this file');
     }
     else {
+
+        echo "$ret bytes written to file.";
+        echo "Preview now: ".'<a href="http://www.cilpublications.org/sandbox/papers/'.$filename.'">Click</a>';
         
-// Unfunctioned uncrufting
-
-        //open file and get data
-$unCruftData = file_get_contents($fileLocation);
-
-// replace tags
-$unCruftData = str_replace("<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
-", "<p>This is a blank line</p> ", $unCruftData);
-$unCruftData = str_replace("&rsquo;", "'", $unCruftData);
-
-//save it back:
-file_put_contents($fileLocation, $unCruftData);
-
-
-//end uncrufting
-
-
-        echo "$ret bytes written to file. Preview now: ".'<a href="http://www.cilpublications.org/sandbox/papers/'.$filename.'">Click</a>';
+        
+        
+        
     }
     
     
@@ -102,4 +84,6 @@ file_put_contents($fileLocation, $unCruftData);
 else {
    die('no post data to process');
 }
+
+
 ?>
