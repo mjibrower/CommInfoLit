@@ -14,7 +14,9 @@
     $author_affiliation = $_POST['affiliation'];
     $abstract = $_POST['abstract'];
     $filename = $lastnameID.'_Vol'.$vol.'No'.$no.'.html';
-    $fileLocation = './papers/'.$filename;
+    $fileLocation = '
+    //path_to_file
+    '.$filename;
     $reflist = '<div id="RefList"><h2 class="CILHead">References</h2>
     <!-- Enter reference list here -->
     <ul id="CILRefs">
