@@ -5,6 +5,8 @@ The Process for Converting CIL Issues to ePub/Kindle
 - Check the document to make sure every element is styled. (Later we'll create a macro for this.)
 - When you're *sure* every element is styled, save as PDF. *This is necessary to make sure the citation is correct; the official citation follows the PDF pagination.*
 2. Epub conversion
+- Create a new project in Sigil.
+- Add fonts, stylesheet, etc. to the project.
 - Import each Word document to Sigil, using the Word Import plugin; each one will be a separate file. (Add instructions here for attaching styles, images, etc. to individual documents)
 - STILL TO DO: Figure out why the Sigil custom styles map isn't working.
 - Clean up using Mend/Prettify.
@@ -17,4 +19,6 @@ The Process for Converting CIL Issues to ePub/Kindle
 3. Kindle conversion
 - Use Calibre or the Kindle Previewer to convert the epub to Kindle. 
 4. HTML 
-- It's already in valid XHTML at this point; 
+- Save each article to a different folder (TBD, but make sure ).
+- Open in current favorite HTML editor and globally replace the link to the stylesheet.
+- Consider later: Converting from XHTML to HTML5. 
