@@ -1,0 +1,20 @@
+The Process for Converting CIL Issues to ePub/Kindle
+
+1. Layout
+- Use custom styles in the Word template to lay out the document. 
+- Check the document to make sure every element is styled. (Later we'll create a macro for this.)
+- When you're *sure* every element is styled, save as PDF. *This is necessary to make sure the citation is correct; the official citation follows the PDF pagination.*
+2. Epub conversion
+- Import each Word document to Sigil, using the Word Import plugin; each one will be a separate file. (Add instructions here for attaching styles, images, etc. to individual documents)
+- STILL TO DO: Figure out why the Sigil custom styles map isn't working.
+- Clean up using Mend/Prettify.
+- Use the Sigil template to add the title page and the masthead.
+- Manually format the document in Sigil. (Add here: the various Sigil clips, shortcuts, regexes, etc.)
+- Use the Canva template to create the cover image.
+- Use the Sigil cover template to make a cover from the cover image.
+- Run the validity/accessibility checker in Sigil.
+- Save regularly and preview in an epub viewer (or more than one).
+3. Kindle conversion
+- Use Calibre or the Kindle Previewer to convert the epub to Kindle. 
+4. HTML 
+- It's already in valid XHTML at this point; 
